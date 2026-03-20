@@ -4,7 +4,7 @@ local:
   shebang: "#!/usr/bin/env bash"
 
 snippets: NCL_Comet_slurm
-baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
+baseurl: "https://NewcastleRSE-Training.github.io/hpc-intro-comet/"
 
 remote:
   name: "Introduction to HPC for Comet"
