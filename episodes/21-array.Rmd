@@ -141,7 +141,7 @@ files. The downloaded books should be as follows:
 
 ::::: challenge
 
-Download the data using [the `make-data.sh` script](files/make-data.sh).
+Download the data using [the __make-data.sh__ script](files/make-data.sh).
 
 :::::
 
