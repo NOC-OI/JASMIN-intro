@@ -3,7 +3,7 @@
 `r config$sched$comment` `r config$sched$flag$queue`=`r config$sched$queue$testing`
 `r config$sched$comment` `r config$sched$flag$name`=array-freq
 `r config$sched$comment` `r config$sched$flag$nodes`=1
-`r config$sched$comment` `r config$sched$flag$tasks`=4
+`r config$sched$comment` `r config$sched$flag$tasks`=1
 `r config$sched$comment` `r config$sched$flag$array`=1-4
 `r config$sched$comment` `r config$sched$flag$time`=00:05:00
 
