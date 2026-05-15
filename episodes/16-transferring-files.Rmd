@@ -326,9 +326,10 @@ happened?
 
 ## Transferring a Directory
 
-To transfer an entire directory, we add the `-r` flag for "**r**ecursive".
-This copies the specified item, and everything below it in the directory
-tree rooted at the folder name you provided.
+To transfer an entire directory, we add the `-r` flag for "**r**ecursive":
+This copies the item specified, and every item below it, and every item below those,
+until it reaches the bottom of the directory tree rooted at the folder name
+you provided.
 
 ```bash
 `r config$local$prompt` scp -r amdahl `r config$remote$user`@`r config$remote$login`:
