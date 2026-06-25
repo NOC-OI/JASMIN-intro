@@ -25,18 +25,20 @@ local:
 remote:
   name: "JASMIN"
   login: "login.jasmin.ac.uk"
+  launch: "sci-vm-02.jasmin.ac.uk" # system that we must login to for launching jobs
   portal: "https://accounts.jasmin.ac.uk"
-  host: "sci-vm-01"
+  host: "sci-vm-02"
   hosttype: "x86_64" # architecture family example, output from `uname -m` on a login node
   node: "host"
   location: "cluster.hpc-carpentry.org"
   user: "jdoe"
   module_python3: "jaspy"
-  prompt: "[yourUsername@sci-vm-01 ~]$"
+  login_prompt: "[yourUsername@login-07 ~]$"
+  prompt: "[yourUsername@sci-vm-02 ~]$"
   shebang: "#!/bin/bash"
 
   fs:
-    home: "/home/users/"
+    home: "/home/users"
 
   modules:
     python: "jaspy"

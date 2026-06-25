@@ -112,6 +112,6 @@ default_config: episodes/files/customization/JASMIN/_config_options.yml
 # custom_config: episodes/files/customization/Ghastly_Mistakes/_config_options.yml
 
 carpentry_description: Lesson Description
-url: 'https://carpentries-incubator.github.io/hpc-intro/'
+url: 'https://noc-oi.github.io/JASMIN-intro/'
 analytics: carpentries
 lang: en

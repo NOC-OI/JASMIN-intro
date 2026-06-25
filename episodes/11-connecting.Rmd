@@ -348,9 +348,10 @@ supplied by the instructors.
 `r config$local$prompt` ssh `r config$remote$user`@`r config$remote$login`
 ```
 
-You may be asked for your password. Watch out: the characters you type after
-the password prompt are not displayed on the screen. Normal output will resume
-once you press `Enter`.
+```bash
+`r config$remote$login_prompt` ssh `r config$remote$user`@`r config$remote$launch`
+```
+
 
 You may have noticed that the prompt changed when you logged into the remote
 system using the terminal (if you logged in using PuTTY this will not apply
