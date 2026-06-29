@@ -29,7 +29,7 @@ remote:
   portal: "https://accounts.jasmin.ac.uk"
   host: "sci-vm-02"
   hosttype: "x86_64" # architecture family example, output from `uname -m` on a login node
-  node: "host"
+  node: "host1001.jc.rl.ac.uk"
   location: "cluster.hpc-carpentry.org"
   user: "jdoe"
   module_python3: "jaspy"
@@ -48,14 +48,14 @@ sched:
   name: "Slurm"
   submit:
     name: "sbatch"
-    options: ""
+    options: "--account=workshop --qos=workshop --partition=debug"
   queue:
     debug: "smnode"
     testing: "cpubase_bycore_b1"
   status: "squeue"
   flag:
-    user: "-u yourUsername"
-    interactive: ""
+    user: "--me"
+    interactive: "--account=workshop --qos=inter --partition=interactive"
     histdetail: "--long --jobs"
     name:    "--job-name"
     account: "--account"
