@@ -1,6 +1,6 @@
 ```output
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    9 cpubase_b example-   user01  R       0:05      1 node1
+   JOBID PARTIT       QOS                 NAME       USER     NODE  CPUS ST         TIME    TIME_LEFT PRIORITY NODELIST(REASON)
+       7  debug     workshop       example-job.sh   youruser    1     1  R          0:02        29:58   195471         host1001
 ```
 
 We can see all the details of our job, most importantly that it is in the `R`

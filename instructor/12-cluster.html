@@ -357,7 +357,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working on a remote HPC system</h1>
-        <p>Last updated on 2026-06-25 |
+        <p>Last updated on 2026-06-30 |
 
         <a href="https://github.com/carpentries-incubator/hpc-intro/edit/main/episodes/12-cluster.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -482,12 +482,12 @@ that the current hostname is also part of our prompt!)</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="va">sci</span><span class="op">-</span><span class="va">vm</span><span class="op">-</span><span class="fl">01</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="va">sci</span><span class="op">-</span><span class="va">vm</span><span class="op">-</span><span class="fl">02</span></span></code></pre>
 </div>
 <div id="whats-in-your-home-directory" class="callout challenge">
 <div class="callout-square">
@@ -512,7 +512,7 @@ neighbors.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> It’s a Beautiful Day in the Neighborhood </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The deepest layer should differ: <code>jdoe</code> is uniquely yours.
 Are there differences in the path at higher levels?</p>
@@ -524,7 +524,7 @@ differences. What are you working on?</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ pwd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ pwd</span></code></pre>
 </div>
 <p>You can run <code>ls</code> to <strong>l</strong>i<strong>s</strong>t
 the directory contents, though it’s possible nothing will show up (if no
@@ -533,7 +533,7 @@ show hidden files, too.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ ls <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ ls <span class="at">-a</span></span></code></pre>
 </div>
 <p>At a minimum, this will show the current directory as <code>.</code>,
 and the parent directory as <code>..</code>.</p>
@@ -589,15 +589,42 @@ command <code>sinfo</code>.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ sinfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sinfo</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST
-cpubase_bycore_b1*    up   infinite      4   idle node[1-2],smnode[1-2]
-node                  up   infinite      2   idle node[1-2]
-smnode                up   infinite      2   idle smnode[1-2]</code></pre>
+<pre class="output" tabindex="0"><code>PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+admin          up    4:00:00     18   mix# host[1032,1086,1088,1097,1119-1120,1129,1131,1133-1134,1137-1138,1148,1163,1196,1198,1224,1229]
+admin          up    4:00:00      3   mix~ host[1231,1235,1237]
+admin          up    4:00:00     13  idle~ host[1004,1006-1008,1010,1012,1014,1018,1175-1179]
+admin          up    4:00:00      2 drain~ host[1105,1203]
+admin          up    4:00:00      1   drng host1080
+admin          up    4:00:00      2  drain host[1020,1063]
+admin          up    4:00:00      1   resv gpuhost008
+admin          up    4:00:00    226    mix gpuhost[002,005,007,009-013,015-016],host[1001,1005,1011,1013,1016-1017,1019,1021-1031,1033-1062,1064-1079,1081-1085,1087,1089-1096,1098-1104,1106-1118,1121,1123-1128,1130,1132,1135,1139,1141-1143,1146-1147,1149-1162,1164-1170,1172-1173,1183-1195,1197,1199-1202,1204-1223,1225-1228,1230,1232-1234,1236,1238-1268,1270]
+admin          up    4:00:00     12  alloc gpuhost[003-004,006],host[1009,1015,1122,1136,1140,1144-1145,1171,1269]
+admin          up    4:00:00      5   idle host[1002-1003,1174,1182],moose2
+standard*      up 1-00:00:00     18   mix# host[1032,1086,1088,1097,1119-1120,1129,1131,1133-1134,1137-1138,1148,1163,1196,1198,1224,1229]
+standard*      up 1-00:00:00      3   mix~ host[1231,1235,1237]
+standard*      up 1-00:00:00      8  idle~ host[1004,1006-1008,1010,1012,1014,1018]
+standard*      up 1-00:00:00      2 drain~ host[1105,1203]
+standard*      up 1-00:00:00      1   drng host1080
+standard*      up 1-00:00:00      2  drain host[1020,1063]
+standard*      up 1-00:00:00    213    mix host[1005,1011,1013,1016-1017,1019,1021-1031,1033-1062,1064-1079,1081-1085,1087,1089-1096,1098-1104,1106-1118,1121,1123-1128,1130,1132,1135,1139,1141-1143,1146-1147,1149-1162,1164-1170,1183-1195,1197,1199-1202,1204-1223,1225-1228,1230,1232-1234,1236,1238-1268,1270]
+standard*      up 1-00:00:00      8  alloc host[1009,1015,1122,1136,1140,1144-1145,1269]
+special        up 2-00:00:00      5  idle~ host[1175-1179]
+special        up 2-00:00:00      2    mix host[1172-1173]
+special        up 2-00:00:00      1  alloc host1171
+special        up 2-00:00:00      1   idle host1174
+debug          up    1:00:00      1    mix host1001
+debug          up    1:00:00      2   idle host[1002-1003]
+orchid         up 1-00:00:00      1   resv gpuhost008
+orchid         up 1-00:00:00      9    mix gpuhost[005,007,009-013,015-016]
+orchid         up 1-00:00:00      3  alloc gpuhost[003-004,006]
+mass           up 1-00:00:00      1   idle moose2
+interactive    up    3:00:00      1   idle host1182
+gpumig         up   12:00:00      1    mix gpuhost002</code></pre>
 </div>
 <p>There are also specialized machines used for managing disk storage,
 user authentication, and other infrastructure-related tasks. Although we
@@ -632,7 +659,7 @@ computer cluster, you need to log out first. To do so, type
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ exit</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ exit</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">[you@laptop:~]$</span></span></code></pre>
 </div>
 </div>
@@ -643,7 +670,7 @@ computer cluster, you need to log out first. To do so, type
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>There are several ways to do this. Most operating systems have a
 graphical system monitor, like the Windows Task Manager. More detailed
@@ -691,14 +718,14 @@ node.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">[you@laptop:~]$</span> ssh jdoe@login.jasmin.ac.uk</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ nproc <span class="at">--all</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ free <span class="at">-m</span></span></code></pre>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ nproc <span class="at">--all</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ free <span class="at">-m</span></span></code></pre>
 </div>
 <p>You can get more information about the processors using
 <code>lscpu</code>, and a lot of detail about the memory by reading the
@@ -706,7 +733,7 @@ file <code>/proc/meminfo</code>:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ less /proc/meminfo</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ less /proc/meminfo</span></code></pre>
 </div>
 <p>You can also explore the available filesystems using <code>df</code>
 to show <strong>d</strong>isk <strong>f</strong>ree space. The
@@ -716,7 +743,7 @@ what kind of filesystem each resource is.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ df <span class="at">-Th</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ df <span class="at">-Th</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -763,7 +790,7 @@ name, CPUs and memory available on one of the worker nodes:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[yourUsername@sci-vm-01</span> ~]$ sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sinfo <span class="at">-o</span> <span class="st">"%n %c %m"</span> <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -870,18 +897,18 @@ a shared filesystem.</li>
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://carpentries-incubator.github.io/hpc-intro/instructor/12-cluster.html",
+  "@id": "https://noc-oi.github.io/JASMIN-intro/instructor/12-cluster.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
   "name": "Working on a remote HPC system",
   "creativeWorkStatus": "active",
-  "url": "https://carpentries-incubator.github.io/hpc-intro/instructor/12-cluster.html",
-  "identifier": "https://carpentries-incubator.github.io/hpc-intro/instructor/12-cluster.html",
+  "url": "https://noc-oi.github.io/JASMIN-intro/instructor/12-cluster.html",
+  "identifier": "https://noc-oi.github.io/JASMIN-intro/instructor/12-cluster.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2026-06-25",
-  "datePublished": "2026-06-25"
+  "dateModified": "2026-06-30",
+  "datePublished": "2026-06-30"
 }
 
   </script><script>
