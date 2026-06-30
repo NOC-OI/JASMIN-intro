@@ -78,7 +78,7 @@ To see available software modules, use `module avail`:
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module avail | less
+[yourUsername@sci-vm-02 ~]$ module avail | less
 ```
 
 ```output
@@ -111,7 +111,7 @@ loaded in your environment. If you have no modules loaded, you will see a
 message telling you so.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module list
+[yourUsername@sci-vm-02 ~]$ module list
 ```
 
 ```output
@@ -128,7 +128,7 @@ executables using directories listed in `$PATH`, similar to how Bash
 locates commands.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ which python3
+[yourUsername@sci-vm-02 ~]$ which python3
 ```
 
 
@@ -145,7 +145,7 @@ the `$PATH` environment variable.
 If we accidentally make a typo for example:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ which pyython3
+[yourUsername@sci-vm-02 ~]$ which pyython3
 ```
 
 we instead see something like:
@@ -177,8 +177,8 @@ We can load a different Python environment using `module load`:
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module load jaspy
-[yourUsername@sci-vm-01 ~]$ which python3
+[yourUsername@sci-vm-02 ~]$ module load jaspy
+[yourUsername@sci-vm-02 ~]$ which python3
 ```
 
 ```output
@@ -195,7 +195,7 @@ before reporting that the command could not be found. As with all environment
 variables, we can print it out using `echo`.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ echo $PATH
+[yourUsername@sci-vm-02 ~]$ echo $PATH
 ```
 
 ```output
@@ -211,7 +211,7 @@ executable before the system version. Let's examine what's located there:
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
+[yourUsername@sci-vm-02 ~]$ ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
 ```
 
 ```output
@@ -232,7 +232,7 @@ To demonstrate, let's use `module list`. `module list` shows all loaded
 software modules.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module list
+[yourUsername@sci-vm-02 ~]$ module list
 ```
 
 ```output
@@ -243,8 +243,8 @@ Currently Loaded Modules:
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module load GROMACS
-[yourUsername@sci-vm-01 ~]$ module list
+[yourUsername@sci-vm-02 ~]$ module load GROMACS
+[yourUsername@sci-vm-02 ~]$ module list
 ```
 
 ```output
@@ -270,8 +270,8 @@ package), also loaded `GMP/6.2.0-GCCcore-x.y.z` and
 `GROMACS` package.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module unload GROMACS
-[yourUsername@sci-vm-01 ~]$ module list
+[yourUsername@sci-vm-02 ~]$ module unload GROMACS
+[yourUsername@sci-vm-02 ~]$ module list
 ```
 
 ```output
@@ -296,8 +296,8 @@ not). If we wanted to unload everything at once, we could run `module purge`
 (unloads everything).
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module purge
-[yourUsername@sci-vm-01 ~]$ module list
+[yourUsername@sci-vm-02 ~]$ module purge
+[yourUsername@sci-vm-02 ~]$ module list
 ```
 
 ```output
@@ -345,7 +345,7 @@ there may be reams of output:
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ module avail | less
+[yourUsername@sci-vm-02 ~]$ module avail | less
 ```
 
 ```output
@@ -388,8 +388,8 @@ compute node).
 ## Solution
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ nano python-module.sh
-[yourUsername@sci-vm-01 ~]$ cat python-module.sh
+[yourUsername@sci-vm-02 ~]$ nano python-module.sh
+[yourUsername@sci-vm-02 ~]$ cat python-module.sh
 ```
 
 ```output
@@ -404,7 +404,7 @@ python3 --version
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  python-module.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug python-module.sh
 ```
 
 :::::::::::::::::::::::::

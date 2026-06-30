@@ -107,11 +107,11 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ hostname
+[yourUsername@sci-vm-02 ~]$ hostname
 ```
 
 ```output
-sci-vm-01
+sci-vm-02
 ```
 
 ::: challenge
@@ -139,7 +139,7 @@ are you working on?
 Use `pwd` to **p**rint the **w**orking **d**irectory path:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ pwd
+[yourUsername@sci-vm-02 ~]$ pwd
 ```
 
 You can run `ls` to **l**i**s**t the directory contents, though it's
@@ -147,7 +147,7 @@ possible nothing will show up (if no files have been provided). To be sure,
 use the `-a` flag to show hidden files, too.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls -a
+[yourUsername@sci-vm-02 ~]$ ls -a
 ```
 
 At a minimum, this will show the current directory as `.`, and the parent
@@ -200,15 +200,42 @@ For example, we can view all of the worker nodes by running the command
 `sinfo`.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sinfo
+[yourUsername@sci-vm-02 ~]$ sinfo
 ```
 
 
 ```output
-PARTITION          AVAIL  TIMELIMIT  NODES  STATE NODELIST
-cpubase_bycore_b1*    up   infinite      4   idle node[1-2],smnode[1-2]
-node                  up   infinite      2   idle node[1-2]
-smnode                up   infinite      2   idle smnode[1-2]
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+admin          up    4:00:00     18   mix# host[1032,1086,1088,1097,1119-1120,1129,1131,1133-1134,1137-1138,1148,1163,1196,1198,1224,1229]
+admin          up    4:00:00      3   mix~ host[1231,1235,1237]
+admin          up    4:00:00     13  idle~ host[1004,1006-1008,1010,1012,1014,1018,1175-1179]
+admin          up    4:00:00      2 drain~ host[1105,1203]
+admin          up    4:00:00      1   drng host1080
+admin          up    4:00:00      2  drain host[1020,1063]
+admin          up    4:00:00      1   resv gpuhost008
+admin          up    4:00:00    226    mix gpuhost[002,005,007,009-013,015-016],host[1001,1005,1011,1013,1016-1017,1019,1021-1031,1033-1062,1064-1079,1081-1085,1087,1089-1096,1098-1104,1106-1118,1121,1123-1128,1130,1132,1135,1139,1141-1143,1146-1147,1149-1162,1164-1170,1172-1173,1183-1195,1197,1199-1202,1204-1223,1225-1228,1230,1232-1234,1236,1238-1268,1270]
+admin          up    4:00:00     12  alloc gpuhost[003-004,006],host[1009,1015,1122,1136,1140,1144-1145,1171,1269]
+admin          up    4:00:00      5   idle host[1002-1003,1174,1182],moose2
+standard*      up 1-00:00:00     18   mix# host[1032,1086,1088,1097,1119-1120,1129,1131,1133-1134,1137-1138,1148,1163,1196,1198,1224,1229]
+standard*      up 1-00:00:00      3   mix~ host[1231,1235,1237]
+standard*      up 1-00:00:00      8  idle~ host[1004,1006-1008,1010,1012,1014,1018]
+standard*      up 1-00:00:00      2 drain~ host[1105,1203]
+standard*      up 1-00:00:00      1   drng host1080
+standard*      up 1-00:00:00      2  drain host[1020,1063]
+standard*      up 1-00:00:00    213    mix host[1005,1011,1013,1016-1017,1019,1021-1031,1033-1062,1064-1079,1081-1085,1087,1089-1096,1098-1104,1106-1118,1121,1123-1128,1130,1132,1135,1139,1141-1143,1146-1147,1149-1162,1164-1170,1183-1195,1197,1199-1202,1204-1223,1225-1228,1230,1232-1234,1236,1238-1268,1270]
+standard*      up 1-00:00:00      8  alloc host[1009,1015,1122,1136,1140,1144-1145,1269]
+special        up 2-00:00:00      5  idle~ host[1175-1179]
+special        up 2-00:00:00      2    mix host[1172-1173]
+special        up 2-00:00:00      1  alloc host1171
+special        up 2-00:00:00      1   idle host1174
+debug          up    1:00:00      1    mix host1001
+debug          up    1:00:00      2   idle host[1002-1003]
+orchid         up 1-00:00:00      1   resv gpuhost008
+orchid         up 1-00:00:00      9    mix gpuhost[005,007,009-013,015-016]
+orchid         up 1-00:00:00      3  alloc gpuhost[003-004,006]
+mass           up 1-00:00:00      1   idle moose2
+interactive    up    3:00:00      1   idle host1182
+gpumig         up   12:00:00      1    mix gpuhost002
 ```
 
 There are also specialized machines used for managing disk storage, user
@@ -241,7 +268,7 @@ Note that, if you're logged in to the remote computer cluster, you need to
 log out first. To do so, type `Ctrl+d` or `exit`:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ exit
+[yourUsername@sci-vm-02 ~]$ exit
 [you@laptop:~]$
 ```
 
@@ -285,15 +312,15 @@ Now compare the resources of your computer with those of the head node.
 
 ```bash
 [you@laptop:~]$ ssh jdoe@login.jasmin.ac.uk
-[yourUsername@sci-vm-01 ~]$ nproc --all
-[yourUsername@sci-vm-01 ~]$ free -m
+[yourUsername@sci-vm-02 ~]$ nproc --all
+[yourUsername@sci-vm-02 ~]$ free -m
 ```
 
 You can get more information about the processors using `lscpu`,
 and a lot of detail about the memory by reading the file `/proc/meminfo`:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ less /proc/meminfo
+[yourUsername@sci-vm-02 ~]$ less /proc/meminfo
 ```
 
 You can also explore the available filesystems using `df` to show **d**isk
@@ -302,7 +329,7 @@ i.e., GB instead of B. The **t**ype flag `-T` shows what kind of filesystem
 each resource is.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ df -Th
+[yourUsername@sci-vm-02 ~]$ df -Th
 ```
 ::::
 :::
@@ -332,7 +359,7 @@ where your jobs will actually run. Try running this command to see
 the name, CPUs and memory available on one of the worker nodes:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sinfo -o "%n %c %m" | column -t
+[yourUsername@sci-vm-02 ~]$ sinfo -o "%n %c %m" | column -t
 ```
 :::
 

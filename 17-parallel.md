@@ -42,8 +42,8 @@ Move into the extracted directory, then use the Package Installer for Python,
 or `pip`, to install it in your ("user") home directory:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cd amdahl
-[yourUsername@sci-vm-01 ~]$ python3 -m pip install --user .
+[yourUsername@sci-vm-02 ~]$ cd amdahl
+[yourUsername@sci-vm-02 ~]$ python3 -m pip install --user .
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -83,12 +83,12 @@ then `rsync` it to the cluster, extract, and install:
 
 ```bash
 [you@laptop:~]$ ssh jdoe@login.jasmin.ac.uk
-[yourUsername@sci-vm-01 ~]$ tar -xvzf mpi4py.tar.gz  # extract the archive
-[yourUsername@sci-vm-01 ~]$ mv mpi4py* mpi4py        # rename the directory
-[yourUsername@sci-vm-01 ~]$ cd mpi4py
-[yourUsername@sci-vm-01 ~]$ python3 -m pip install --user .
-[yourUsername@sci-vm-01 ~]$ cd ../amdahl
-[yourUsername@sci-vm-01 ~]$ python3 -m pip install --user .
+[yourUsername@sci-vm-02 ~]$ tar -xvzf mpi4py.tar.gz  # extract the archive
+[yourUsername@sci-vm-02 ~]$ mv mpi4py* mpi4py        # rename the directory
+[yourUsername@sci-vm-02 ~]$ cd mpi4py
+[yourUsername@sci-vm-02 ~]$ python3 -m pip install --user .
+[yourUsername@sci-vm-02 ~]$ cd ../amdahl
+[yourUsername@sci-vm-02 ~]$ python3 -m pip install --user .
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -109,7 +109,7 @@ To check whether this warning is a problem, use `which` to search for the
 `amdahl` program:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ which amdahl
+[yourUsername@sci-vm-02 ~]$ which amdahl
 ```
 
 If the command returns no output, displaying a new prompt, it means the file
@@ -119,8 +119,8 @@ Edit your shell configuration file as follows, then log off the cluster and
 back on again so it takes effect.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ nano ~/.bashrc
-[yourUsername@sci-vm-01 ~]$ tail ~/.bashrc
+[yourUsername@sci-vm-02 ~]$ nano ~/.bashrc
+[yourUsername@sci-vm-02 ~]$ tail ~/.bashrc
 ```
 
 ```output
@@ -139,7 +139,7 @@ If you had to load a Python module, load it again.
 Many command-line programs include a "help" message. Try it with `amdahl`:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ amdahl --help
+[yourUsername@sci-vm-02 ~]$ amdahl --help
 ```
 
 ```output
@@ -166,8 +166,8 @@ Create a submission file, requesting one task on a single node, then launch it.
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ nano serial-job.sh
-[yourUsername@sci-vm-01 ~]$ cat serial-job.sh
+[yourUsername@sci-vm-02 ~]$ nano serial-job.sh
+[yourUsername@sci-vm-02 ~]$ cat serial-job.sh
 ```
 
 ```bash
@@ -185,14 +185,14 @@ amdahl
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch serial-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch serial-job.sh
 ```
 
 As before, use the Slurm status commands to check whether your job
 is running and when it ends:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ squeue -u yourUsername
+[yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -206,7 +206,7 @@ The cluster output should be written to a file in the folder you launched the
 job from. For example,
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls -t
+[yourUsername@sci-vm-02 ~]$ ls -t
 ```
 
 ```output
@@ -214,15 +214,15 @@ slurm-347087.out  serial-job.sh  amdahl  LICENSE  pyproject.toml  README.md
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat slurm-347087.out
+[yourUsername@sci-vm-02 ~]$ cat slurm-347087.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 1 processor,
 which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 1 on host. I will do all the serial 'work' for 7.021608 seconds.
-  Hello, World! I am process 0 of 1 on host. I will do parallel 'work' for 26.302983 seconds.
+  Hello, World! I am process 0 of 1 on host1001.jc.rl.ac.uk. I will do all the serial 'work' for 7.021608 seconds.
+  Hello, World! I am process 0 of 1 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 26.302983 seconds.
 
 Total execution time (according to rank 0): 33.326056 seconds
 ```
@@ -287,9 +287,9 @@ Let's modify the job script to request more cores and use the MPI run-time.
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cp serial-job.sh parallel-job.sh
-[yourUsername@sci-vm-01 ~]$ nano parallel-job.sh
-[yourUsername@sci-vm-01 ~]$ cat parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ cp serial-job.sh parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ nano parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ cat parallel-job.sh
 ```
 
 ```bash
@@ -313,13 +313,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls -t
+[yourUsername@sci-vm-02 ~]$ ls -t
 ```
 
 ```output
@@ -328,18 +328,18 @@ slurm-347087.out  serial-job.sh    LICENSE  README.md
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat slurm-347178.out
+[yourUsername@sci-vm-02 ~]$ cat slurm-347178.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 4 processors,
  which should take 12.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 0 of 4 on host. I will do all the serial 'work' for 6.851971 seconds.
-  Hello, World! I am process 2 of 4 on host. I will do parallel 'work' for 6.726753 seconds.
-  Hello, World! I am process 1 of 4 on host. I will do parallel 'work' for 6.742398 seconds.
-  Hello, World! I am process 3 of 4 on host. I will do parallel 'work' for 6.782674 seconds.
-  Hello, World! I am process 0 of 4 on host. I will do parallel 'work' for 6.468167 seconds.
+  Hello, World! I am process 0 of 4 on host1001.jc.rl.ac.uk. I will do all the serial 'work' for 6.851971 seconds.
+  Hello, World! I am process 2 of 4 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 6.726753 seconds.
+  Hello, World! I am process 1 of 4 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 6.742398 seconds.
+  Hello, World! I am process 3 of 4 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 6.782674 seconds.
+  Hello, World! I am process 0 of 4 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 6.468167 seconds.
 
 Total execution time (according to rank 0): 13.579746 seconds
 ```
@@ -406,8 +406,8 @@ code gets.
 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ nano parallel-job.sh
-[yourUsername@sci-vm-01 ~]$ cat parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ nano parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ cat parallel-job.sh
 ```
 
 ```bash
@@ -431,13 +431,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch parallel-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls -t
+[yourUsername@sci-vm-02 ~]$ ls -t
 ```
 
 ```output
@@ -446,22 +446,22 @@ parallel-job.sh      slurm-347087.out  amdahl         pyproject.toml
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat slurm-347178.out
+[yourUsername@sci-vm-02 ~]$ cat slurm-347178.out
 ```
 
 ```output
 Doing 30.000000 seconds of 'work' on 8 processors,
  which should take 9.000000 seconds with 0.800000 parallel proportion of the workload.
 
-  Hello, World! I am process 4 of 8 on host. I will do parallel 'work' for 3.157831 seconds.
-  Hello, World! I am process 0 of 8 on host. I will do all the serial 'work' for 6.031285 seconds.
-  Hello, World! I am process 2 of 8 on host. I will do parallel 'work' for 3.215214 seconds.
-  Hello, World! I am process 1 of 8 on host. I will do parallel 'work' for 3.524280 seconds.
-  Hello, World! I am process 3 of 8 on host. I will do parallel 'work' for 3.589039 seconds.
-  Hello, World! I am process 5 of 8 on host. I will do parallel 'work' for 3.501589 seconds.
-  Hello, World! I am process 6 of 8 on host. I will do parallel 'work' for 3.207707 seconds.
-  Hello, World! I am process 7 of 8 on host. I will do parallel 'work' for 3.071680 seconds.
-  Hello, World! I am process 0 of 8 on host. I will do parallel 'work' for 3.482018 seconds.
+  Hello, World! I am process 4 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.157831 seconds.
+  Hello, World! I am process 0 of 8 on host1001.jc.rl.ac.uk. I will do all the serial 'work' for 6.031285 seconds.
+  Hello, World! I am process 2 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.215214 seconds.
+  Hello, World! I am process 1 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.524280 seconds.
+  Hello, World! I am process 3 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.589039 seconds.
+  Hello, World! I am process 5 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.501589 seconds.
+  Hello, World! I am process 6 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.207707 seconds.
+  Hello, World! I am process 7 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.071680 seconds.
+  Hello, World! I am process 0 of 8 on host1001.jc.rl.ac.uk. I will do parallel 'work' for 3.482018 seconds.
 
 Total execution time (according to rank 0): 9.514393 seconds
 ```
@@ -496,7 +496,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 $$
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ for n in 33.326056 13.579746 9.514393; do python3 -c "print(33.326056 / $n)"; done
+[yourUsername@sci-vm-02 ~]$ for n in 33.326056 13.579746 9.514393; do python3 -c "print(33.326056 / $n)"; done
 ```
 
 | Number of CPUs | Speedup        | Ideal |

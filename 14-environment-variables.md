@@ -48,13 +48,13 @@ Let's start by running the command `set` and looking at some of the variables
 in a typical shell session:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ set
+[yourUsername@sci-vm-02 ~]$ set
 ```
 
 ```output
 ...
 HOME=/jdoe
-HOSTNAME=sci-vm-01
+HOSTNAME=sci-vm-02
 HOSTTYPE=x86_64
 PATH=/jdoe/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 PWD=/jdoe
@@ -83,7 +83,7 @@ command `id -un` performs this lookup automatically.
 Let's show the value of the variable `HOME`:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ echo HOME
+[yourUsername@sci-vm-02 ~]$ echo HOME
 ```
 
 ```output
@@ -95,7 +95,7 @@ That just prints "HOME", which isn't what we wanted
 Let's try this instead:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ echo $HOME
+[yourUsername@sci-vm-02 ~]$ echo $HOME
 ```
 
 ```output
@@ -204,8 +204,8 @@ job was submitted.
 ## Solution
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ nano example-job.sh
-[yourUsername@sci-vm-01 ~]$ cat example-job.sh
+[yourUsername@sci-vm-02 ~]$ nano example-job.sh
+[yourUsername@sci-vm-02 ~]$ cat example-job.sh
 ```
 
 ```output

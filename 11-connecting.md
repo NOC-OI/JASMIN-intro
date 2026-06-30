@@ -63,7 +63,7 @@ When logging in to a laptop, tablet, or other personal device, a username,
 password, or pattern are normally required to prevent unauthorized access. In
 these situations, the likelihood of somebody else intercepting your password is
 low, since logging your keystrokes requires a malicious exploit or physical
-access. For systems like `sci-vm-01` running an SSH server, anybody
+access. For systems like `sci-vm-02` running an SSH server, anybody
 on the network can log in, or try to. Since usernames are often public or easy
 to guess, your password is often the weakest link in the security chain. Many
 clusters therefore forbid password-based login, requiring instead that you
@@ -323,9 +323,10 @@ supplied by the instructors.
 [you@laptop:~]$ ssh jdoe@login.jasmin.ac.uk
 ```
 
-You may be asked for your password. Watch out: the characters you type after
-the password prompt are not displayed on the screen. Normal output will resume
-once you press `Enter`.
+```bash
+[yourUsername@login-07 ~]$ ssh jdoe@sci-vm-02.jasmin.ac.uk
+```
+
 
 You may have noticed that the prompt changed when you logged into the remote
 system using the terminal (if you logged in using PuTTY this will not apply
@@ -340,7 +341,7 @@ on though so we will adopt the following convention:
 
 - `[you@laptop:~]$` when the command is to be entered on a terminal
   connected to your local computer
-- `[yourUsername@sci-vm-01 ~]$` when the command is to be entered on a
+- `[yourUsername@sci-vm-02 ~]$` when the command is to be entered on a
   terminal connected to the remote system
 - `$` when it really doesn't matter which system the terminal is connected to.
 
@@ -354,28 +355,28 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ hostname
+[yourUsername@sci-vm-02 ~]$ hostname
 ```
 
 ```output
-sci-vm-01
+sci-vm-02
 ```
 
 So, we're definitely on the remote machine. Next, let's find out where we are
 by running `pwd` to **p**rint the **w**orking **d**irectory.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ pwd
+[yourUsername@sci-vm-02 ~]$ pwd
 ```
 
 ```output
-/home/users//jdoe
+/home/users/jdoe
 ```
 
 Great, we know where we are! Let's see what's in our current directory:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls
+[yourUsername@sci-vm-02 ~]$ ls
 ```
 
 ```output
@@ -388,7 +389,7 @@ other filesystems. If they did not, your home directory may appear empty. To
 double-check, include hidden files in your directory listing:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ ls -a
+[yourUsername@sci-vm-02 ~]$ ls -a
 ```
 
 ```output
@@ -397,7 +398,7 @@ double-check, include hidden files in your directory listing:
 ```
 
 In the first column, `.` is a reference to the current directory and `..` a
-reference to its parent (`/home/users/`). You may or may not see
+reference to its parent (`/home/users`). You may or may not see
 the other files, or files like them: `.bashrc` is a shell configuration file,
 which you can edit with your preferences; and `.ssh` is a directory storing SSH
 keys and a record of authorized connections.
@@ -422,14 +423,14 @@ If the `.ssh` folder was not listed above, then it does not yet
 exist: create it.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ mkdir ~/.ssh
+[yourUsername@sci-vm-02 ~]$ mkdir ~/.ssh
 ```
 
 Now, use `cat` to print your public key, but redirect the output, appending it
 to the `authorized_keys` file:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
+[yourUsername@sci-vm-02 ~]$ cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
 ```
 
 That's all! Disconnect, then try to log back into the remote: if your key and
@@ -437,7 +438,7 @@ agent have been configured correctly, you should not be prompted for the
 password for your SSH key.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ logout
+[yourUsername@sci-vm-02 ~]$ logout
 ```
 
 ```bash

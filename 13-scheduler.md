@@ -68,7 +68,7 @@ manner. Our shell script will have three parts:
   name of the machine the script is run on.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ nano example-job.sh
+[yourUsername@sci-vm-02 ~]$ nano example-job.sh
 ```
 
 ```bash
@@ -89,11 +89,11 @@ Run the script. Does it execute on the cluster or just our login node?
 ## Solution
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ bash example-job.sh
+[yourUsername@sci-vm-02 ~]$ bash example-job.sh
 ```
 
 ```output
-This script is running on sci-vm-01
+This script is running on sci-vm-02
 ```
 
 :::::::::::::::::::::::::
@@ -108,10 +108,10 @@ To submit this task to the scheduler, we use the
 `sbatch` command.
 This creates a *job* which will run the *script* when *dispatched* to
 a compute node which the queuing system has identified as being
-available to perform the work.
+available to perform the work. 
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
 ```
 
 
@@ -123,15 +123,16 @@ And that's all we need to do to submit a job. Our work is done -- now the
 scheduler takes over and tries to run the job for us. While the job is waiting
 to run, it goes into a list of jobs called the *queue*. To check on our job's
 status, we check the queue using the command
-`squeue -u yourUsername`.
+`squeue --me`.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ squeue -u yourUsername
+[yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
+
 ```output
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    9 cpubase_b example-   user01  R       0:05      1 node1
+   JOBID PARTIT       QOS                 NAME       USER     NODE  CPUS ST         TIME    TIME_LEFT PRIORITY NODELIST(REASON)
+       7  debug     workshop       example-job.sh   youruser    1     1  R          0:02        29:58   195471         host1001
 ```
 
 We can see all the details of our job, most importantly that it is in the `R`
@@ -174,12 +175,12 @@ script, but the `--job-name` option can be used to change the
 name of a job. Add an option to the script:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat example-job.sh
+[yourUsername@sci-vm-02 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-namehello-world
+#SBATCH --job-name hello-world
 
 echo -n "This script is running on "
 hostname
@@ -188,13 +189,18 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
-[yourUsername@sci-vm-01 ~]$ squeue -u yourUsername
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ squeue --me
+```
+
+
+```output
+Submitted batch job 8
 ```
 
 ```output
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   10 cpubase_b hello-wo   user01  R       0:02      1 node1
+   JOBID PARTIT       QOS                 NAME       USER        NODE  CPUS ST         TIME    TIME_LEFT PRIORITY NODELIST(REASON)
+       8  debug     workshop          hello-world    youruser    1     1    R          0:01        29:59   195153 host1001
 ```
 
 Fantastic, we've successfully changed the name of our job!
@@ -248,7 +254,7 @@ for it on the cluster.
 ## Solution
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat example-job.sh
+[yourUsername@sci-vm-02 ~]$ cat example-job.sh
 ```
 
 ```bash
@@ -261,7 +267,7 @@ hostname
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -277,12 +283,12 @@ killed. Let's use wall time as an example. We will request 1 minute of
 wall time, and attempt to run a job for two minutes.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat example-job.sh
+[yourUsername@sci-vm-02 ~]$ cat example-job.sh
 ```
 
 ```bash
 #!/bin/bash
-#SBATCH --job-namelong_job
+#SBATCH --job-name long_job
 #SBATCH --time 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
@@ -294,12 +300,12 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
-[yourUsername@sci-vm-01 ~]$ squeue -u yourUsername
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ cat slurm-12.out
+[yourUsername@sci-vm-02 ~]$ cat slurm-12.out
 ```
 
 ```output
@@ -327,25 +333,29 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
-[yourUsername@sci-vm-01 ~]$ squeue -u yourUsername
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ squeue --me
 ```
+
 
 ```output
 Submitted batch job 13
-
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   13 cpubase_b long_job   user01  R       0:02      1 node1
 ```
+
+```output
+   JOBID PARTIT       QOS                 NAME       USER NODE  CPUS ST         TIME    TIME_LEFT PRIORITY NODELIST(REASON)
+      13  debug     debug             long_job   youruser    1     1  R         0:08         0:52   194941 host1001
+```
+
 
 Now cancel the job with its job number (printed in your terminal). A clean
 return of your command prompt indicates that the request to cancel the job was
 successful.
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ scancel 38759
+[yourUsername@sci-vm-02 ~]$ scancel 13
 # It might take a minute for the job to disappear from the queue...
-[yourUsername@sci-vm-01 ~]$ squeue -u yourUsername
+[yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
 ```output
@@ -369,15 +379,15 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
-[yourUsername@sci-vm-01 ~]$ sbatch  example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
 ```
 
 Then, cancel them all:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ scancel -u jdoe
+[yourUsername@sci-vm-02 ~]$ scancel -u jdoe
 ```
 
 :::::::::::::::::::::::::
@@ -401,11 +411,11 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ srun hostname
+[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=workshop --partition=debug hostname
 ```
-
+ 
 ```output
-host
+host1001.jc.rl.ac.uk
 ```
 
 `srun` accepts all of the same options as
@@ -414,7 +424,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ srun -n 2 echo "This job will use 2 CPUs."
+[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=workshop --partition=debug -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -433,7 +443,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[yourUsername@sci-vm-01 ~]$ srun  --pty bash
+[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=inter --partition=interactive --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
@@ -446,7 +456,7 @@ logged on. You can also verify this with `hostname`.
 
 To see graphical output inside your jobs, you need to use X11 forwarding. To
 connect with this feature enabled, use the `-Y` option when you login with
-the `ssh` command, e.g., `ssh -Y jdoe@login.jasmin.ac.uk`.
+the `ssh` command, e.g., `ssh -Y -J jdoe@login.jasmin.ac.uk jdoe@sci-vm-02.jasmin.ac.uk`.
 
 To demonstrate what happens when you create a graphics window on the remote
 node, use the `xeyes` command. A relatively adorable pair of eyes should pop
