@@ -42,7 +42,7 @@ machine sends back. We will use the _**S**ecure **Sh**ell_ protocol (or SSH) to 
 encrypted network connection between two machines, allowing you to send \&
 receive text and data without having to worry about prying eyes.
 
-![connect-to-remote.svg](fig/connect-to-remote.svg){
+![Connecting to a cluster.](fig/connect-to-remote.svg){
   max-width="50%"
   alt="Connect to cluster. "
 }

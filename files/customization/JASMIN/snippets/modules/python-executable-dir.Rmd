@@ -1,10 +1,17 @@
 ```bash
-`r config$remote$prompt` ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
+`r config$remote$prompt` ls /apps/jasmin/jaspy/miniforge_envs/jaspy3.12/mf3-25.3.0-3/bin/
 ```
 
 ```output
-idle3     pip   pip3.13  pydoc3.13  python3     python3.13-config  python-config
-idle3.13  pip3  pydoc3   python     python3.13  python3-config     wheel
+2to3       bsdunzip  bzip2recover  cph          gencnval       infocmp       keyctl       lz4               nghttp      pydoc3             reset             toe       wish8.6                         zstdless
+2to3-3.12  bunzip2   bzless        c_rehash     gendict        infotocap     kinit        lz4c              nghttpd     pydoc3.12          sclient           tput      x86_64-conda_cos6-linux-gnu-ld  zstdmt
+activate   bzcat     bzmore        curl-config  genrb          installcheck  klist        lz4cat            nghttpx     python             sim_client        tqdm      x86_64-conda-linux-gnu-ld
+adig       bzcmp     captoinfo     deactivate   gss-client     jsondiff      kpasswd      makeconv          normalizer  python3            sqlite3_analyzer  tset      xml2-config
+ahost      bzdiff    clear         derb         icu-config     jsonpatch     krb5-config  mamba             openssl     python3.1          tabs              unlz4     xmlcatalog
+archspec   bzegrep   compile_et    distro       icuexportdata  jsonpointer   ksu          mamba-package     pip         python3.12         tclsh             unzstd    xmllint
+bsdcat     bzfgrep   conda         dumpsolv     icuinfo        k5srvutil     kswitch      mergesolv         pip3        python3.12-config  tclsh8.6          uuclient  zstd
+bsdcpio    bzgrep    conda2solv    genbrk       idle3          kadmin        ktutil       ncurses6-config   pkgdata     python3-config     testsolv          wheel     zstdcat
+bsdtar     bzip2     conda-env     gencfu       idle3.12       kdestroy      kvno         ncursesw6-config  pydoc       repo2solv          tic               wish      zstdgrep
 ```
 
 Note that the exact output may vary from cluster to cluster.

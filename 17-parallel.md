@@ -34,6 +34,10 @@ If you disconnected, log back in to the cluster.
 [you@laptop:~]$ ssh jdoe@login.jasmin.ac.uk
 ```
 
+```bash
+[you@laptop:~]$ ssh jdoe@sci-vm-02.jasmin.ac.uk
+```
+
 ## Install the Amdahl Program
 
 With the Amdahl source code on the cluster, we can install it, which will
@@ -173,7 +177,9 @@ Create a submission file, requesting one task on a single node, then launch it.
 ```bash
 #!/bin/bash
 #SBATCH --job-name solo-job
-#SBATCH --partition cpubase_bycore_b1
+#SBATCH --partition debug
+#SBATCH --account workshop
+#SBATCH --qos workshop
 #SBATCH -N 1
 #SBATCH -n 1
 
@@ -295,14 +301,15 @@ Let's modify the job script to request more cores and use the MPI run-time.
 ```bash
 #!/bin/bash
 #SBATCH --job-name parallel-job
-#SBATCH --partition cpubase_bycore_b1
+#SBATCH --partition debug
+#SBATCH --account workshop
+#SBATCH --qos workshop
 #SBATCH -N 1
 #SBATCH -n 4
 
 # Load the computing environment we need
-# (mpi4py and numpy are in SciPy-bundle)
+# (mpi4py and numpy are in jaspy)
 module load jaspy
-module load SciPy-bundle
 
 # Execute the task
 mpiexec amdahl
@@ -413,14 +420,15 @@ code gets.
 ```bash
 #!/bin/bash
 #SBATCH --job-name parallel-job
-#SBATCH --partition cpubase_bycore_b1
+#SBATCH --partition debug
+#SBATCH --account workshop
+#SBATCH --qos workshop
 #SBATCH -N 1
 #SBATCH -n 8
 
 # Load the computing environment we need
-# (mpi4py and numpy are in SciPy-bundle)
+# (mpi4py and numpy are in jaspy)
 module load jaspy
-module load SciPy-bundle
 
 # Execute the task
 mpiexec amdahl

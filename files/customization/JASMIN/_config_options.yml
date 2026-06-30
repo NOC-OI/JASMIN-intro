@@ -50,8 +50,10 @@ sched:
     name: "sbatch"
     options: "--account=workshop --qos=workshop --partition=debug"
   queue:
-    debug: "smnode"
-    testing: "cpubase_bycore_b1"
+    debug: "debug"
+    testing: "debug"
+    qos: "workshop"
+    account: "workshop"
   status: "squeue"
   flag:
     user: "--me"
@@ -60,6 +62,7 @@ sched:
     name:    "--job-name"
     account: "--account"
     array:   "--array"
+    qos:     "--qos"
     time:    "--time"
     queue:   "--partition"
     nodes:   "--nodes"

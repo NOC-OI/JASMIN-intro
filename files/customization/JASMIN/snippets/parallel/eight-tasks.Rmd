@@ -7,13 +7,14 @@
 `r config$remote$shebang`
 `r config$sched$comment` `r config$sched$flag$name` parallel-job
 `r config$sched$comment` `r config$sched$flag$queue` `r config$sched$queue$testing`
+`r config$sched$comment` `r config$sched$flag$account` `r config$sched$queue$account`
+`r config$sched$comment` `r config$sched$flag$qos` `r config$sched$queue$qos`
 `r config$sched$comment` -N 1
 `r config$sched$comment` -n 8
 
 # Load the computing environment we need
-# (mpi4py and numpy are in SciPy-bundle)
+# (mpi4py and numpy are in `r config$remote$modules$python`)
 module load `r config$remote$modules$python`
-module load SciPy-bundle
 
 # Execute the task
 mpiexec amdahl
