@@ -1,0 +1,8 @@
+```bash
+`r config$remote$prompt` module load `r config$remote$modules$python`
+`r config$remote$prompt` which python3
+```
+
+```output
+/apps/jasmin/jaspy/miniforge_envs/jaspy3.12/mf3-25.3.0-3/envs/jaspy3.12-mf3-25.3.0-3-v20250704/bin/python3
+```

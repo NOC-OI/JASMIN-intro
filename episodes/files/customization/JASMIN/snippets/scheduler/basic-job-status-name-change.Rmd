@@ -1,0 +1,8 @@
+```output
+Submitted batch job 8
+```
+
+```output
+   JOBID PARTIT       QOS                 NAME       USER        NODE  CPUS ST         TIME    TIME_LEFT PRIORITY NODELIST(REASON)
+       8  debug     workshop          hello-world    youruser    1     1    R          0:01        29:59   195153 host1001
+```

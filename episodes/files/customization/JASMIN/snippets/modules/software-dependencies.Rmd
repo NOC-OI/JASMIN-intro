@@ -1,0 +1,53 @@
+To demonstrate, let's use `module list`. `module list` shows all loaded
+software modules.
+
+```bash
+`r config$remote$prompt` module list
+```
+
+```output
+Currently Loaded Modules:
+  1) jaspy/3.12/v20250704
+```
+
+```bash
+`r config$remote$prompt` module load netcdf/intel2024.2.0/4.9.2
+`r config$remote$prompt` module list
+```
+
+```output
+Currently Loaded Modules:
+  1) jaspy/3.12/v20250704   2) oneapi/compilers/24.2.0   3) oneapi/mpi/24.2.0   4) netcdf/intel2024.2.0/4.9.2
+```
+
+So in this case, loading the `netcdf` module also loaded `oneapi/compilers/24.2.0` and
+`oneapi/mpi/24.2.0` as well. Let's try unloading the
+`netcdf` package.
+
+```bash
+`r config$remote$prompt` module unload netcdf/intel2024.2.0/4.9.2
+`r config$remote$prompt` module list
+```
+
+```output
+Currently Loaded Modules:
+  1) jaspy/3.12/v20250704
+```
+
+So using `module unload` "un-loads" a module, and depending on how a site is
+configured it may also unload all of the dependencies (in our case it does
+not). If we wanted to unload everything at once, we could run `module purge`
+(unloads everything).
+
+```bash
+`r config$remote$prompt` module purge
+`r config$remote$prompt` module list
+```
+
+```output
+No modules loaded
+```
+
+Note that `module purge` is informative. It will also let us know if a default
+set of "sticky" packages cannot be unloaded (and how to actually unload these
+if we truly so desired).

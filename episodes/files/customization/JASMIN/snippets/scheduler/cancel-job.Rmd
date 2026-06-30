@@ -1,0 +1,8 @@
+```output
+Submitted batch job 13
+```
+
+```output
+   JOBID PARTIT       QOS                 NAME       USER NODE  CPUS ST         TIME    TIME_LEFT PRIORITY NODELIST(REASON)
+      13  debug     debug             long_job   youruser    1     1  R         0:08         0:52   194941 host1001
+```

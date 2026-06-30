@@ -111,7 +111,7 @@ To submit this task to the scheduler, we use the
 ``r config$sched$submit$name`` command.
 This creates a *job* which will run the *script* when *dispatched* to
 a compute node which the queuing system has identified as being
-available to perform the work.
+available to perform the work. 
 
 ```bash
 `r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
@@ -131,14 +131,9 @@ status, we check the queue using the command
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
-```output
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    9 cpubase_b example-   user01  R       0:05      1 node1
+```{r, echo=FALSE, results='asis'}
+snippets('scheduler/basic-job-status.Rmd')
 ```
-
-We can see all the details of our job, most importantly that it is in the `R`
-or `RUNNING` state. Sometimes our jobs might need to wait in a queue
-(`PENDING`) or have an error (`E`).
 
 ::::::::::::::::::::::::::::::::::::::  discussion
 
@@ -181,7 +176,7 @@ name of a job. Add an option to the script:
 
 ```bash
 `r config$remote$shebang`
-`r config$sched$comment` `r config$sched$flag$name`hello-world
+`r config$sched$comment` `r config$sched$flag$name` hello-world
 
 echo -n "This script is running on "
 hostname
@@ -194,9 +189,8 @@ Submit the job and monitor its status:
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
-```output
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   10 cpubase_b hello-wo   user01  R       0:02      1 node1
+```{r, echo=FALSE, results='asis'}
+snippets('scheduler/basic-job-status-name-change.Rmd')
 ```
 
 Fantastic, we've successfully changed the name of our job!
@@ -284,7 +278,7 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 `r config$remote$shebang`
-`r config$sched$comment` `r config$sched$flag$name`long_job
+`r config$sched$comment` `r config$sched$flag$name` long_job
 `r config$sched$comment` `r config$sched$flag$time` 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
@@ -333,19 +327,17 @@ you to cancel it before it is killed!).
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
-```output
-Submitted batch job 13
-
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   13 cpubase_b long_job   user01  R       0:02      1 node1
+```{r, echo=FALSE, results='asis'}
+snippets('scheduler/cancel-job.Rmd')
 ```
+
 
 Now cancel the job with its job number (printed in your terminal). A clean
 return of your command prompt indicates that the request to cancel the job was
 successful.
 
 ```bash
-`r config$remote$prompt` `r config$sched$del` 38759
+`r config$remote$prompt` `r config$sched$del` 13
 # It might take a minute for the job to disappear from the queue...
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
@@ -403,9 +395,9 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` hostname
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$submit$options` hostname
 ```
-
+ 
 ```output
 `r config$remote$node`
 ```
@@ -416,7 +408,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` -n 2 echo "This job will use 2 CPUs."
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$submit$options` -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -435,7 +427,7 @@ went wrong with a previous job. Fortunately, `r config$sched$name` makes it
 easy to start an interactive job with ``r config$sched$interactive``:
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` `r config$sched$submit$options` --pty bash
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$flag$interactive` --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
@@ -448,7 +440,7 @@ logged on. You can also verify this with `hostname`.
 
 To see graphical output inside your jobs, you need to use X11 forwarding. To
 connect with this feature enabled, use the `-Y` option when you login with
-the `ssh` command, e.g., `ssh -Y `r config$remote$user`@`r config$remote$login``.
+the `ssh` command, e.g., `ssh -Y -J `r config$remote$user`@`r config$remote$login` `r config$remote$user`@`r config$remote$launch``.
 
 To demonstrate what happens when you create a graphics window on the remote
 node, use the `xeyes` command. A relatively adorable pair of eyes should pop
