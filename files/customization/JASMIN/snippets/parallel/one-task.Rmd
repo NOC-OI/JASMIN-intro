@@ -7,6 +7,8 @@
 `r config$remote$shebang`
 `r config$sched$comment` `r config$sched$flag$name` solo-job
 `r config$sched$comment` `r config$sched$flag$queue` `r config$sched$queue$testing`
+`r config$sched$comment` `r config$sched$flag$account` `r config$sched$queue$account`
+`r config$sched$comment` `r config$sched$flag$qos` `r config$sched$queue$qos`
 `r config$sched$comment` -N 1
 `r config$sched$comment` -n 1
 
