@@ -48,7 +48,7 @@ sched:
   name: "Slurm"
   submit:
     name: "sbatch"
-    options: "--account=workshop --qos=workshop --partition=debug"
+    options: "--account=workshop --qos=workshop --partition=standard"
   queue:
     debug: "debug"
     testing: "debug"
