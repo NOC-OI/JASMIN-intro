@@ -50,8 +50,8 @@ sched:
     name: "sbatch"
     options: "--account=workshop --qos=workshop --partition=standard"
   queue:
-    debug: "debug"
-    testing: "debug"
+    debug: "standard"
+    testing: "standard"
     qos: "workshop"
     account: "workshop"
   status: "squeue"
