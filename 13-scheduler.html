@@ -468,7 +468,7 @@ node?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -494,7 +494,7 @@ identified as being available to perform the work.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -574,7 +574,7 @@ to change the name of a job. Add an option to the script:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ squeue <span class="at">--me</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -640,7 +640,7 @@ then submit a job for it on the cluster.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -660,7 +660,7 @@ then submit a job for it on the cluster.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span></code></pre>
 </div>
 <p>Why are the Slurm runtime and <code>sleep</code> time not
 identical?</p>
@@ -692,7 +692,7 @@ check the log file.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span>
 <span id="cb19-2"><a href="#cb19-2" tabindex="-1" aria-label="code-block-19-2"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ squeue <span class="at">--me</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb20">
@@ -727,7 +727,7 @@ it runs long enough for you to cancel it before it is killed!).</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span>
 <span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ squeue <span class="at">--me</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -776,15 +776,15 @@ yourself). Note that you can only delete your own jobs.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>First, submit a trio of jobs:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ sbatch <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard example-job.sh</span></code></pre>
 </div>
 <p>Then, cancel them all:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -814,7 +814,7 @@ with <code>Ctrl-c</code>.)</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ srun <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ srun <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -829,7 +829,7 @@ command:</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ srun <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>debug <span class="at">-n</span> 2 echo <span class="st">"This job will use 2 CPUs."</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="ex">[yourUsername@sci-vm-02</span> ~]$ srun <span class="at">--account</span><span class="op">=</span>workshop <span class="at">--qos</span><span class="op">=</span>workshop <span class="at">--partition</span><span class="op">=</span>standard <span class="at">-n</span> 2 echo <span class="st">"This job will use 2 CPUs."</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
