@@ -177,7 +177,7 @@ Create a submission file, requesting one task on a single node, then launch it.
 ```bash
 #!/bin/bash
 #SBATCH --job-name solo-job
-#SBATCH --partition debug
+#SBATCH --partition standard
 #SBATCH --account workshop
 #SBATCH --qos workshop
 #SBATCH -N 1
@@ -301,7 +301,7 @@ Let's modify the job script to request more cores and use the MPI run-time.
 ```bash
 #!/bin/bash
 #SBATCH --job-name parallel-job
-#SBATCH --partition debug
+#SBATCH --partition standard
 #SBATCH --account workshop
 #SBATCH --qos workshop
 #SBATCH -N 1
@@ -420,7 +420,7 @@ code gets.
 ```bash
 #!/bin/bash
 #SBATCH --job-name parallel-job
-#SBATCH --partition debug
+#SBATCH --partition standard
 #SBATCH --account workshop
 #SBATCH --qos workshop
 #SBATCH -N 1

@@ -111,7 +111,7 @@ a compute node which the queuing system has identified as being
 available to perform the work. 
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
 ```
 
 
@@ -189,7 +189,7 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
 [yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
@@ -267,7 +267,7 @@ hostname
 ```
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -300,7 +300,7 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
 [yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
@@ -333,7 +333,7 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
 [yourUsername@sci-vm-02 ~]$ squeue --me
 ```
 
@@ -379,9 +379,9 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard example-job.sh
 ```
 
 Then, cancel them all:
@@ -411,7 +411,7 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=workshop --partition=debug hostname
+[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=workshop --partition=standard hostname
 ```
  
 ```output
@@ -424,7 +424,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=workshop --partition=debug -n 2 echo "This job will use 2 CPUs."
+[yourUsername@sci-vm-02 ~]$ srun --account=workshop --qos=workshop --partition=standard -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output

@@ -402,7 +402,7 @@ python3 --version
 ```
 
 ```bash
-[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=debug python-module.sh
+[yourUsername@sci-vm-02 ~]$ sbatch --account=workshop --qos=workshop --partition=standard python-module.sh
 ```
 
 :::::::::::::::::::::::::
